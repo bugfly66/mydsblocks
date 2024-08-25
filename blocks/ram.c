@@ -5,8 +5,8 @@
 #include "../util.h"
 #include "ram.h"
 
-#define ICONn                           COL1 "" COL0
-#define ICONw                           COL2 "" COL0
+#define ICONn                           COL0 " " NOR
+#define ICONw                           ERR  " " NOR
 
 #define MEMW                            90
 

@@ -4,22 +4,22 @@
 #include "../util.h"
 #include "battery.h"
 
-#define ICONe                           COL2 "" COL0 /* unexpected error */
-#define ICONa                           COL1 "" COL0 /* no battery */
+#define ICONe                           ERR "󰂑" NOR /* unexpected error */
+#define ICONa                           ERR  "󱟩" NOR /* no battery */
 
-#define PDN                             COL1
-#define PUP                             COL2
+#define PDN                             NOR
+#define PUP                             COL0 
 
-#define ICON0                           "" COL0
-#define ICON1                           "" COL0
-#define ICON2                           "" COL0
-#define ICON3                           "" COL0
-#define ICON4                           "" COL0
-#define ICON5                           "" COL0
-#define ICON6                           "" COL0
-#define ICON7                           "" COL0
-#define ICON8                           "" COL0
-#define ICON9                           "" COL0
+#define ICON0                          ERR "󰁺" NOR
+#define ICON1                          ERR "󰁻" NOR
+#define ICON2                          WARN "󰁼" NOR
+#define ICON3                          WARN "󰁽" NOR
+#define ICON4                           "󰁾" NOR
+#define ICON5                           "󰁿" NOR
+#define ICON6                           "󰂀" NOR
+#define ICON7                           "󰂁" NOR
+#define ICON8                           "󰂂" NOR
+#define ICON9                           "󰁹" NOR
 
 #define ICON(bat)                       icons[(bat * (LENGTH(icons) - 1) + 50) / 100]
 
@@ -28,11 +28,11 @@
 #define BATP                            40  /* plug in level */
 #define BATU                            101 /* unplug level */
 
-#define BATCAPFILE                      "/sys/class/power_supply/BAT0/capacity"
-#define ACSTATEFILE                     "/sys/class/power_supply/AC/online"
-#define BATCFULLFILE                    "/sys/class/power_supply/BAT0/charge_full"
-#define BATCNOWFILE                     "/sys/class/power_supply/BAT0/charge_now"
-#define BATRATEFILE                     "/sys/class/power_supply/BAT0/current_now"
+#define BATCAPFILE                      "/sys/class/power_supply/BAT1/capacity"
+#define ACSTATEFILE                     "/sys/class/power_supply/ACAD/online"
+#define BATCFULLFILE                    "/sys/class/power_supply/BAT1/energy_full"
+#define BATCNOWFILE                     "/sys/class/power_supply/BAT1/energy_now"
+#define BATRATEFILE                     "/sys/class/power_supply/BAT1/power_now"
 
 #define CNOTIFY(t, msg)                (char *[]){ "notify-send", \
                                                    "-h", "string:x-canonical-private-synchronous:batmon", \
@@ -88,7 +88,7 @@ batteryu(char *str, int sigval)
                                         level = Unplug;
                                 }
                         }
-                        return SPRINTF(str, PUP "%s%d%%", ICON(bat), bat);
+                        return SPRINTF(str, PUP "%s%d%%󱐋", ICON(bat), bat);
                 } else {
                         if (bat > BATP)
                                 level = Normal;

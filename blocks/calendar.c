@@ -3,7 +3,7 @@
 #include "../util.h"
 #include "calendar.h"
 
-#define ICON                    COL1 "" COL0
+#define ICON                    COL0 " " NOR
 
 #define TOGGLECALCURSE          (char *[]){ SCRIPT("sigdwm"), "scrt i 4", NULL }
 

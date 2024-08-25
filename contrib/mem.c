@@ -4,7 +4,7 @@
 #include "../util.h"
 #include "mem.h"
 
-#define ICONmem                           COL1 "\uf538" COL0
+#define ICONmem                           COL0 "\uf538" NOR
 
 static const char meminfofile[] = "/proc/meminfo";
 

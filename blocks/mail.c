@@ -5,10 +5,10 @@
 #include "../util.h"
 #include "mail.h"
 
-#define ICONn                           COL1 "" COL0 /* last sync successful */
-#define ICONe                           COL2 "" COL0 /* last sync failed */
-#define ICONs                           COL3 "" COL0 /* syncing */
-#define ICONz                           COL4 "" COL0 /* frozen */
+#define ICONn                           COL0 "" NOR /* last sync successful */
+#define ICONe                           COL2 "" NOR /* last sync failed */
+#define ICONs                           COL3 "" NOR /* syncing */
+#define ICONz                           COL4 "" NOR /* frozen */
 
 #define NEWMAILDIR                      "/home/ashish/.local/share/mail/iiser/INBOX/new"
 

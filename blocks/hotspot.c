@@ -3,7 +3,7 @@
 #include "../util.h"
 #include "hotspot.h"
 
-#define ICON                            COL1 ""
+#define ICON                            COL0 "? "
 
 #define TURNOFFHOTSPOT                  (char *[]){ "sudo", SCRIPT("hotspot.sh"), "terminate", NULL }
 

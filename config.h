@@ -5,7 +5,10 @@
 #include "blocks/mail.h"
 #include "blocks/ram.h"
 #include "blocks/volume.h"
-
+#include "blocks/wifi.h"
+#include "blocks/cpuuse.h"
+#include "blocks/kernel.h"
+#include "blocks/music.h"
 /* DELIMITERENDCHAR must be less than 32.
  * At max, DELIMITERENDCHAR - 1 number of clickable blocks are allowed.
  * Raw characters larger than DELIMITERENDCHAR and smaller than ' ' in ASCII
@@ -15,7 +18,7 @@
    defined in colors array in dwm's config.h and so on.
  * If you wish to change DELIMITERENDCHAR, don't forget to update its value in
    dwm.c and color codes in util.h. */
-#define DELIMITERENDCHAR                10
+#define DELIMITERENDCHAR               16 
 
 static const char delimiter[] = { ' ', ' ', ' ', DELIMITERENDCHAR };
 
@@ -43,12 +46,16 @@ static const char delimiter[] = { ' ', ' ', ' ', DELIMITERENDCHAR };
 
 static Block blocks[] = {
 /*      funcu                   funcc                   interval        signal */
-        { hotspotu,             hotspotc,               -1,             4 },
+       // { hotspotu,             hotspotc,               -1,             4 },
+        { musicu,                musicc,                0,             11 },
+        // { kernelu,              kernelc,                0,             10 },
         { calendaru,            calendarc,              1,              1 },
-        { mailu,                mailc,                  180,            3 },
+       // { mailu,                mailc,                  180,            3 },
         { volumeu,              volumec,                0,              2 },
+        { cpuuseu,              cputempc,               2,              9 },
         { cputempu,             cputempc,               2,              6 },
         { ramu,                 ramc,                   2,              7 },
+        { wifiu,                wific,                  3,              8 },
         { batteryu,             batteryc,               10,             5 },
         { NULL } /* just to mark the end of the array */
 };

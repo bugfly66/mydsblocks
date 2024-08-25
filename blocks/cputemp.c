@@ -3,8 +3,8 @@
 #include "../util.h"
 #include "cputemp.h"
 
-#define ICONn                           COL1 "" COL0
-#define ICONc                           COL2 "" COL0
+#define ICONn                           COL0 " " NOR
+#define ICONc                           COL2 " " NOR
 
 #define WARNCPUTEMP                     70000
 

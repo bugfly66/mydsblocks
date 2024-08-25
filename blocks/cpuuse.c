@@ -38,7 +38,7 @@ cpuuseu(char *str, int sigval)
 	for (; i < 10; ++i)
 		idle += cpunew[i] - cpuold[i];
 
-	return SPRINTF(str, ICONcpu " %0.1f%%", working * 100.0 / (idle + working));
+	return SPRINTF(str, ICONcpu "%0.1f%%", working * 100.0 / (idle + working));
 }
 
 void

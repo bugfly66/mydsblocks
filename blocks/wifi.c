@@ -4,17 +4,17 @@
 #include "../util.h"
 #include "wifi.h"
 
-#define ICONerr                          "󰤮" NOR 
+#define ICONerr                          "󰤮 " NOR 
 
-#define ICONw0                           "󰤫" NOR 
-#define ICONw1                           "󰤯" NOR
-#define ICONw2                           "󰤟" NOR
-#define ICONw3                           "󰤢" NOR
-#define ICONw4                           "󰤥" NOR
-#define ICONw5                           "󰤨" NOR
+#define ICONw0                           "󰤫 " NOR 
+#define ICONw1                           "󰤯 " NOR
+#define ICONw2                           "󰤟 " NOR
+#define ICONw3                           "󰤢 " NOR
+#define ICONw4                           "󰤥 " NOR
+#define ICONw5                           "󰤨 " NOR
 
 #define WIFIFILE                        "/proc/net/wireless"
-#define INTERFACENAME                   "wlo1"
+#define INTERFACENAME                   "wlp4s0"
 
 /* use watch to determine apropiate levels on the proc file */
 /* you are looking for value of Quality level */
@@ -43,8 +43,10 @@ wifiu(char *str, int sigval)
     }
 
     /* Skip n lines of the wireless file */
-    for (int n=0; n<2; n++)
-        fscanf(fp, "%*[^\n]\n");
+    for (int n=0; n<2; n++){
+        if(fscanf(fp, "%*[^\n]\n") == -1)
+        return SPRINTF(str,ERR  "%s", ICONerr);
+    }
     if (fscanf(fp, "%[^:]s", field_name) != 1) {
             fclose(fp);
             SPRINTF(str, NOR ICONw0);
@@ -59,7 +61,8 @@ wifiu(char *str, int sigval)
         quality_level = val;
     }
     fclose(fp);
-
+    if (quality_level < -100)
+        return SPRINTF(str, WARN "%s%d", ICONw0, quality_level);
     return SPRINTF(str, NOR  "%s%d", ICON(quality_level), quality_level);
 }
 

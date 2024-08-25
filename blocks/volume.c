@@ -3,16 +3,16 @@
 #include "../util.h"
 #include "volume.h"
 
-#define ICONsn                          COL1 "" COL0
-#define ICONsm                          COL2 "" COL0
-#define ICONhn                          COL1 "" COL0
-#define ICONhm                          COL2 "" COL0
+#define ICONsn                          COL0 " " NOR
+#define ICONsm                          ERR  " " NOR
+#define ICONhn                          COL0 " " NOR
+#define ICONhm                          ERR  "󰟎 " NOR
 
 #define PULSEINFO                       (char *[]){ SCRIPT("pulse_info.sh"), NULL }
 
 #define PAVUCONTROL                     (char *[]){ "pavucontrol-qt", NULL }
 #define NORMALIZEVOLUME                 (char *[]){ SCRIPT("pulse_normalize.sh"), NULL }
-#define TOGGLEMUTE                      (char *[]){ "pactl", "set-sink-mute", "@DEFAULT_SINK@", "toggle", NULL }
+#define TOGGLEMUTE                      (char *[]){ SCRIPT("volume-toggle.sh"), NULL }
 
 size_t
 volumeu(char *str, int sigval)

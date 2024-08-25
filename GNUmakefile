@@ -1,7 +1,7 @@
 PREFIX = /usr/local
 
 CC = gcc
-CFLAGS = -O3 -Wall -Wextra
+CFLAGS = -O3 -Wall -Wextra -g
 
 X11CFLAGS = $(shell pkg-config --cflags x11)
 X11LIBS = $(shell pkg-config --libs x11)
